@@ -41,24 +41,24 @@ public:
 	static typename std::enable_if<std::is_base_of<Window, T>::value, T*>::type sCreate(const IRect& inRect, LPCWSTR inName) { return (T*)sCreate(inRect, inName, new T); }
 
 	///@name Interaction
-	void				Show();							///< Force the window to be shown
+	void				Show();								///< Force the window to be shown
 
 	///@name Events (return if handled or not)
-	virtual bool		OnCreate()	{ return false; }	///< Occurs when the window is created
-	virtual bool		OnPaint()	{ return false; }	///< Occurs every time the window requests a repaint
-	virtual bool		OnClose()	{ return false; }	///< Occurs when the window is closed
-	virtual bool		OnDestroy() { return false; }	///< Occurs when the window is finally destroyed
+	virtual bool		OnCreate()		{ return false; }	///< Occurs when the window is created
+	virtual bool		OnPaint()		{ return false; }	///< Occurs every time the window requests a repaint
+	virtual bool		OnClose()		{ return false; }	///< Occurs when the window is closed
+	virtual bool		OnDestroy()		{ return false; }	///< Occurs when the window is finally destroyed
 
 protected:
 	///@name Constructor
-						Window() = default;				///< Private default constructor as we want windows to be created with Window::sCreate
+						Window() = default;					///< Private default constructor as we want windows to be created with Window::sCreate
 
 private:
 	
 	static Window*		sCreate(const IRect& inRect, LPCWSTR inName, void* inParent); ///< Create a window
 
 	///@name Properties
-	HWND				mHandle;						///< Win32 window handle
+	HWND				mHandle;							///< Win32 window handle
 };
 
 
