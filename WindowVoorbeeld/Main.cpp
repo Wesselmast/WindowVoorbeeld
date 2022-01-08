@@ -120,12 +120,12 @@ Window* Window::sCreate(const IRect& inRect, LPCWSTR inName, void* inParent)
 
 	// Initialize a window class and register it
 	WNDCLASS window_class = {};
-	window_class.style = 0;
-	window_class.lpfnWndProc = gWindowProc;
-	window_class.hInstance = GetModuleHandle(0);
-	window_class.lpszClassName = L"CoolNewFantasticWindowClass";
-	window_class.hIcon = LoadIcon(0, IDI_WINLOGO);
-	window_class.hCursor = LoadCursor(0, IDC_ARROW);
+	window_class.style			= 0;
+	window_class.lpfnWndProc	= gWindowProc;
+	window_class.lpszClassName	= L"VoorbeeldjeWindowClass";
+	window_class.hInstance		= GetModuleHandle(0);
+	window_class.hIcon			= LoadIcon(0, IDI_WINLOGO);
+	window_class.hCursor		= LoadCursor(0, IDC_ARROW);
 	RegisterClass(&window_class);
 
 	// Create the HWND
