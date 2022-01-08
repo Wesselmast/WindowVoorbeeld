@@ -1,8 +1,11 @@
+// Win32 includes
 #include <windows.h>
-#include <unordered_map>
+
+// STL includes
 #include <cassert>
 #include <memory>
 #include <type_traits>
+#include <unordered_map>
 
 
 
@@ -11,16 +14,16 @@
 **/
 struct IRect
 {
-	int mX = 0;
-	int mY = 0;
-	int mW = 0;
-	int mH = 0;
+	int mX = 0;		///< X position
+	int mY = 0;		///< Y position
+	int mW = 0;		///< Width
+	int mH = 0;		///< Height
 };
 
 
 
 /**
-@brief HashMap that tracks windows by window handles. Ugly, but it works..
+@brief HashMap that tracks windows by window handles
 **/
 class Window;
 std::unordered_map<HWND, Window*> gWindows;
@@ -33,7 +36,7 @@ std::unordered_map<HWND, Window*> gWindows;
 class Window
 {
 public:
-	///@name Create function + awful C++ type traits stuff that ensures that T inherits from window
+	///@name Create function + awful STL type traits stuff, which ensures that T inherits from Window
 	template<class T>
 	static typename std::enable_if<std::is_base_of<Window, T>::value, T*>::type sCreate(const IRect& inRect, LPCWSTR inName) { return (T*)sCreate(inRect, inName, new T); }
 
@@ -205,6 +208,7 @@ public:
 
 	virtual bool OnClose() override
 	{
+		// Close
 		printf("[CLOSE] \tClosed Window!\n");
 		return false;
 	}
@@ -222,6 +226,7 @@ class HelloWindow : public Window
 {
 	virtual bool OnCreate() override
 	{
+		// Create
 		printf("Hello, World!\n");
 		return false;
 	}
