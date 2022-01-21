@@ -1,3 +1,5 @@
+#pragma once 
+
 // STL includes
 #include <cassert>
 #include <memory>

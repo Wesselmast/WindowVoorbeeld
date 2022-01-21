@@ -66,7 +66,9 @@ public:
 	static bool sIsDown(const Key& inKey);						///< Check if a key is down (e.g. Input::sIsDown(KEY_TAB))
 	static bool sIsDown(const KeyCombination& inCombination);	///< Check if a key combination is down (e.g. Input::sIsDown(KEY_CTRL | KEY_ALT | KEY_DEL))
 
-	// Make private later
+private:
+	friend struct InputKey;										///< Allow InputKey classes with an input key to be able to also set input
+
 	static void sSetDown(KeyCode inKeyCode, bool inDown);		///< Set @a inKeyCode to @a inDown
 };
 
