@@ -44,15 +44,10 @@ extern void gQuitApplication();
 
 
 
-// Forward declare HWND. TODO: Make it so we do not need this.
-struct HWND__;
-typedef HWND__* HWND;
-
-
-
 /**
 @brief Base Win32 window class
 **/
+struct WindowID;
 class Window
 {
 public:
@@ -85,5 +80,5 @@ private:
 	static Window*		sCreate(const IRect& inRect, const String& inName, void* inParent); ///< Create a window internally
 
 	///@name Properties
-	HWND				mHandle;							///< Win32 window handle
+	WindowID			mHandle;							///< Win32 window handle
 };

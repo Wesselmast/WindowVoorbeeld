@@ -1,8 +1,7 @@
 #pragma once
 
-// Includes
-#include <cstdint>
-#include <vector>
+// Additional includes
+#include "Utility.h"
 
 
 
@@ -23,7 +22,7 @@ private:
 	friend class Input;											///< Input uses KeyCombination for verification
 
 	///@name Properties
-	std::vector<Key>		mKeys;								///< Combination of keys
+	Array<Key>				mKeys;								///< Combination of keys
 };
 
 
@@ -67,7 +66,7 @@ public:
 	static bool sIsDown(const KeyCombination& inCombination);	///< Check if a key combination is down (e.g. Input::sIsDown(KEY_CTRL | KEY_ALT | KEY_DEL))
 
 private:
-	friend struct InputKey;										///< Allow InputKey classes with an input key to be able to also set input
+	friend struct InputKey;										///< Allow classes with an input key to be able to also set input
 
 	static void sSetDown(KeyCode inKeyCode, bool inDown);		///< Set @a inKeyCode to @a inDown
 };

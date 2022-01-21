@@ -5,6 +5,7 @@
 #include <memory>
 #include <type_traits>
 #include <unordered_map>
+#include <vector>
 
 
 
@@ -13,6 +14,7 @@
 TODO: Write our own version instead of using STL
 **/
 #define	HashMap			std::unordered_map
+#define	Array			std::vector
 #define	Pair			std::pair
 using	String			= std::string;
 

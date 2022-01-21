@@ -48,7 +48,7 @@ class HelloWindow : public Window
 	virtual bool OnMouseDown() override 
 	{
 		// Only respond on CTRL + Click
-		if (Input::sIsDown(MOUSE_L | MOUSE_R))
+		if (Input::sIsDown(KEY_CTRL | MOUSE_R))
 			gLog("Party Time!\n");
 		else
 			gLog("Lame party");

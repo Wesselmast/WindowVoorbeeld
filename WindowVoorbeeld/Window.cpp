@@ -7,17 +7,23 @@
 #include "Input.h"
 
 
+/**
+@brief Typedef HWND for WindowID
+**/
+typedef HWND__* WindowID;
+
+
 
 /**
 @brief HashMap that tracks windows by window handles
 **/
 class Window;
-HashMap<HWND, Window*> gWindows;
+HashMap<WindowID, Window*> gWindows;
 
 
 
 /**
-@brief Special input key used for accessing setter functions on the input class
+@brief Special input key used for accessing the setter functions of the input class
 
 WARNING:
 Please use this class structure carefully, as this directly modifies the key registry
@@ -150,7 +156,7 @@ Window* Window::sCreate(const IRect& inRect, const String& inName, void* inParen
 	window_class.hCursor		= LoadCursor(0, IDC_ARROW);
 	RegisterClass(&window_class);
 
-	// Create the HWND
+	// Create the window
 	window->mHandle = CreateWindowEx(0, window_class.lpszClassName, wname, WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 									inRect.mX, inRect.mY, inRect.mW, inRect.mH, 0, 0, window_class.hInstance, window);
 	return window;
@@ -211,7 +217,7 @@ void gProcessMessageLoop()
 
 quit:
 	// Delete all windows
-	for (Pair<HWND, Window*> pair : gWindows)
+	for (Pair<WindowID, Window*> pair : gWindows)
 		delete pair.second;
 	gWindows.clear();
 }

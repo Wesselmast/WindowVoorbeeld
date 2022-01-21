@@ -1,5 +1,6 @@
-// Includes
 #include "Input.h"
+
+// Additional includes
 #include "Utility.h"
 
 
@@ -177,14 +178,15 @@ bool Input::sIsDown(const KeyCombination& inCombination)
 **/
 void Input::sSetDown(KeyCode inKeyCode, bool inDown)
 {
-    try 
-    {
-        gKeyRegistry.SetKeyDown(gKeyCodeToKeyLUT.at(inKeyCode), (uint8_t)inDown);
-    }
-    catch (...)
+#ifdef _DEBUG
+    // In debug mode, check first if the KeyCode was implemented
+    if (gKeyCodeToKeyLUT.find(inKeyCode) == gKeyCodeToKeyLUT.end())
     {
         gLogKeyNotImplemented(inKeyCode);
+        return;
     }
+#endif
+    gKeyRegistry.SetKeyDown(gKeyCodeToKeyLUT.at(inKeyCode), (uint8_t)inDown);
 }
 
 
